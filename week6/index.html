@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pay Calculator</title>
+</head>
+<body>
+<script>
+  // Function to calculate gross pay
+  function calculateGrossPay(hourlyPay, hoursWorked) {
+    return hourlyPay * hoursWorked;
+  }
+
+  // Function to calculate tax amount
+  function calculateTax(grossPay, taxRate) {
+    return grossPay * taxRate;
+  }
+
+  // Function to calculate net pay
+  function calculateNetPay(grossPay, taxAmount) {
+    return grossPay - taxAmount;
+  }
+
+  // Constants
+  const hourlyPay = 14.50;
+  const hoursWorkedPerWeek = 32;
+  const taxRate = 0.20;
+  const weeksWorked = 2;
+
+  // Calculate gross pay
+  const grossPay = calculateGrossPay(hourlyPay, hoursWorkedPerWeek * weeksWorked);
+
+  // Calculate tax amount
+  const taxAmount = calculateTax(grossPay, taxRate);
+
+  // Calculate net pay
+  const netPay = calculateNetPay(grossPay, taxAmount);
+
+  // Output results
+  console.log("Gross Pay: $" + grossPay.toFixed(2));
+  console.log("Uncle Sam's Share: $" + taxAmount.toFixed(2));
+  console.log("Net Pay: $" + netPay.toFixed(2));
+
+  // Alert box
+  alert("Gross Pay: $" + grossPay.toFixed(2) + "\nUncle Sam's Share: $" + taxAmount.toFixed(2) + "\nNet Pay: $" + netPay.toFixed(2));
+</script>
+</body>
+</html>

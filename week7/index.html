@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Your Name"> <!-- Edit this line with your name -->
+    <title>Pay Calculator Form</title>
+</head>
+<body>
+    <h1>Pay Calculator Form</h1>
+    <form id="payForm">
+        <table> <!-- Bonus: placing form elements in a table for alignment -->
+            <tr>
+                <td><label for="firstName">First Name:</label></td>
+                <td><input type="text" id="firstName"></td>
+            </tr>
+            <tr>
+                <td><label for="lastName">Last Name:</label></td>
+                <td><input type="text" id="lastName"></td>
+            </tr>
+            <tr>
+                <td><label for="hoursWorked">Hours Worked:</label></td>
+                <td><input type="text" id="hoursWorked"></td>
+            </tr>
+            <tr>
+                <td><label for="hourlyRate">Hourly Rate:</label></td>
+                <td><input type="text" id="hourlyRate"></td>
+            </tr>
+            <!-- Add id for the input element without a label -->
+            <tr>
+                <td colspan="2"><input type="submit" value="SUBMIT"></td>
+            </tr>
+        </table>
+    </form>
+
+    <div id="employeeInfo"></div>
+
+    <script>
+        document.getElementById("payForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get values from the form
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let hoursWorked = parseFloat(document.getElementById("hoursWorked").value);
+            let hourlyRate = parseFloat(document.getElementById("hourlyRate").value);
+
+            // Calculate gross pay
+            let grossPay = hoursWorked * hourlyRate;
+
+            // Display employee info
+            document.getElementById("employeeInfo").innerHTML = `
+                <p>Employee Info:</p>
+                <p>First Name: ${firstName}</p>
+                <p>Last Name: ${lastName}</p>
+                <p>Hours Worked: ${hoursWorked}</p>
+                <p>Hourly Rate: ${hourlyRate}</p>
+                <p>Gross Pay: ${grossPay.toFixed(2)}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
