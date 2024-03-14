@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Characters</title>
+    <style>
+        .border {
+            border: 1px solid black;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    // Array of objects containing movie character information
+    const characters = [
+        { name: "Harry Potter", role: "Wizard", movie: "Harry Potter and the Philosopher's Stone" },
+        { name: "Luke Skywalker", role: "Jedi", movie: "Star Wars: A New Hope" },
+        { name: "Indiana Jones", role: "Archaeologist", movie: "Raiders of the Lost Ark" },
+        { name: "James Bond", role: "Secret Agent", movie: "Dr. No" },
+        { name: "Hermione Granger", role: "Wizard", movie: "Harry Potter and the Philosopher's Stone" },
+        { name: "Frodo Baggins", role: "Hobbit", movie: "The Lord of the Rings: The Fellowship of the Ring" }
+    ];
+
+    // Query select the body tag
+    const body = document.querySelector('body');
+
+    // Loop through the array of objects
+    for (let i = 0; i < characters.length; i++) {
+        // Create a new div
+        const tempDiv = document.createElement('div');
+
+        // Apply id and class to the div
+        tempDiv.setAttribute('id', String(i));
+        tempDiv.classList.add('border');
+
+        // Loop through each property of the object
+        for (let prop in characters[i]) {
+            // Create a new <p> element
+            const tempP = document.createElement('p');
+            
+            // Create a text node with the property value
+            const textNode = document.createTextNode(`${prop}: ${characters[i][prop]}`);
+            
+            // Append the text node to the <p> element
+            tempP.appendChild(textNode);
+            
+            // Append the <p> element to the <div>
+            tempDiv.appendChild(tempP);
+        }
+
+        // Append the div to the body
+        body.appendChild(tempDiv);
+    }
+</script>
+
+</body>
+</html>

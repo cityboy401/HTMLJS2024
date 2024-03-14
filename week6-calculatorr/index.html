@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Calculator</title>
+</head>
+<body>
+    <script>
+        // Prompt the user for input
+        const hourlyPay = Number(prompt("Enter your hourly pay ($14.50):"));
+        const hoursWorked = Number(prompt("Enter your hours worked per week (32):"));
+        const taxRate = 0.20; // 20%
+
+        // Calculate gross pay
+        const grossPay = hourlyPay * hoursWorked * 2; // Two-week period
+
+        // Calculate Uncle Sam's share
+        const uncleSamsShare = grossPay * taxRate;
+
+        // Calculate net pay
+        const netPay = grossPay - uncleSamsShare;
+
+        // Display the results
+        alert(`Gross Pay: $${grossPay.toFixed(2)}\nUncle Sam's Share: $${uncleSamsShare.toFixed(2)}\nNet Pay: $${netPay.toFixed(2)}`);
+        console.log(`Gross Pay: $${grossPay.toFixed(2)}`);
+        console.log(`Uncle Sam's Share: $${uncleSamsShare.toFixed(2)}`);
+        console.log(`Net Pay: $${netPay.toFixed(2)}`);
+    </script>
+</body>
+</html>

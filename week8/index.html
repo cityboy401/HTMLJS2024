@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Information</title>
+    <meta name="author" content="Your Name">
+</head>
+<body>
+    <h1>Person Information</h1>
+
+    <form id="personForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName"><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Employee Info:</h2>
+    <ul id="employeeList"></ul>
+
+    <script>
+        const form = document.getElementById('personForm');
+        const firstNameInput = document.getElementById('firstName');
+        const lastNameInput = document.getElementById('lastName');
+        const employeeList = document.getElementById('employeeList');
+        const people = [];
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const firstName = firstNameInput.value.trim();
+            const lastName = lastNameInput.value.trim();
+
+            if (firstName && lastName) {
+                const person = {
+                    firstName: firstName,
+                    lastName: lastName
+                };
+
+                people.push(person);
+
+                // Sort the array alphabetically by last name
+                people.sort((a, b) => a.lastName.localeCompare(b.lastName));
+
+                // Clear the form inputs
+                firstNameInput.value = '';
+                lastNameInput.value = '';
+
+                // Update the displayed employee list
+                displayEmployeeList();
+            }
+        });
+
+        function displayEmployeeList() {
+            // Clear the existing list
+            employeeList.innerHTML = '';
+
+            // Render each person in the array as a list item
+            people.forEach(function(person) {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${person.lastName}, ${person.firstName}`;
+                employeeList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html>
